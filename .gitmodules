@@ -1,0 +1,15 @@
+[submodule "hypr"]
+	path = hypr
+	url = git@github.com:benjaminjellis/hypr.git
+[submodule "wofi"]
+	path = wofi
+	url = git@github.com:benjaminjellis/wofi.git
+[submodule "waybar"]
+	path = waybar
+	url = git@github.com:benjaminjellis/waybar.git
+[submodule "benvim"]
+	path = benvim
+	url = git@github.com:benjaminjellis/benvim.git
+[submodule "wezterm"]
+	path = wezterm
+	url = https://github.com/benjaminjellis/wezterm
