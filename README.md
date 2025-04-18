@@ -7,6 +7,6 @@ stow . -t ~/.config
 to update all submodules run:
 
 ```
-git submodule update --init --recursive
+git submodule update --remote
 ```
 
