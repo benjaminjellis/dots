@@ -7,9 +7,9 @@
 [submodule "waybar"]
 	path = waybar
 	url = git@github.com:benjaminjellis/waybar.git
-[submodule "benvim"]
-	path = benvim
-	url = git@github.com:benjaminjellis/benvim.git
 [submodule "wezterm"]
 	path = wezterm
 	url = https://github.com/benjaminjellis/wezterm
+[submodule "nvim"]
+	path = nvim
+	url = git@github.com:benjaminjellis/benvim.git
