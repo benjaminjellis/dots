@@ -4,16 +4,16 @@
   width: 800px;
   --font-family: "Liga SFMono Nerd Font";
   font-size: 15px;
-  background: #062625;
-  color: #d0b892;
+  background: #c0c0c0;
+  color: #000000;
   padding: 10px;
 
   .container {
     .search {
       --spacing: 1;
-      background: #062625;
+      background: #c0c0c0;
       border-radius: 0;
-      color: #d0b892;
+      color: #000000;
       padding: 4px;
       --height: fill-portion 1;
       .plugin-hint {
@@ -35,18 +35,10 @@
     .rows {
       --height: fill-portion 6;
       .row-selected {
-        color: #8cde94;
+        background: #008080;
         --spacing: 3px;
       }
     }
 
-    .scrollable {
-      background: #0c3d40;
-      width: 0;
-      .scroller {
-        width: 0;
-        color: #0c3d40;
-      }
-    }
   }
 }
