@@ -1,0 +1,151 @@
+{
+  // "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "height": 30, // Waybar height (to be removed for auto height)
+  // "width": 1280, // Waybar width
+  "spacing": 1, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "modules-left": [
+    "custom/start",
+    "tray",
+    "custom/spotify"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "clock",
+  ],
+  "custom/start": {
+    "format": "󰣇 Start",
+    "tooltip": false,
+    "on-click": "onagre"
+  },
+  "hyprland/workspaces": {
+    "all-outputs": true,
+    "active-only": false,
+    "on-click": "activate",
+    "format": "{icon}",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "󰈹",
+      "10": "󰒱"
+      // "4": "󰴒",
+      // "5": "",
+      // "6": "󰙯",
+      // "7": "󰎈",
+      // "urgent": "",
+      // "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+  "tray": {
+    // "icon-size": INT
+    "spacing": 4
+  },
+  "network": {
+    "format-wifi": ", ({signalStrength}%)",
+    "format-ethernet": " {ifname}",
+    "tooltip-format": " {ifname} via {gwaddr}",
+    "format-linked": ", ({signalStrength}%)",
+    "format-disconnected": "Disconnected ⚠ {ifname}",
+    "format-alt": " {ifname}: {ipaddr}/{cidr}"
+  },
+  "clock": {
+    "interval": 60,
+    //"format": "{:%m/%d %H:%M}"
+    "format": "{:%F | %I:%M %p}"
+  },
+  "cpu": {
+    "format": "{usage}%   ",
+    "tooltip": false
+  },
+  "backlight": {
+    "device": "eDP-1",
+    "format": "{icon}",
+    "tooltip-format": "{percent}",
+    "format-icons": [
+      "󱩎 ",
+      "󱩏 ",
+      "󱩐 ",
+      "󱩑 ",
+      "󱩒 ",
+      "󱩓 ",
+      "󱩔 ",
+      "󱩕 ",
+      "󱩖 ",
+      "󰛨 "
+    ],
+    "on-scroll-up": "~/.config/waybar/scripts/brightness.sh --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/brightness.sh --dec"
+  },
+  "battery": {
+    "interval": 60,
+    "align": 0,
+    "rotate": 0,
+    "full-at": 100,
+    "design-capacity": false,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-full": "{icon}  Full",
+    "format-alt": "{icon}  {time}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "format-time": "{H}h {M}min",
+    "tooltip": true
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        "󰕾"
+      ]
+    },
+    "on-click": "pavucontrol &",
+    "on-click-right": "pamixer -t",
+    "scroll-step": 5,
+    "on-scroll-up": "~/.config/waybar/scripts/volume.sh --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/volume.sh --dec"
+  },
+  // "custom/spotify": {
+  //   "exec": "uv run ~/.config/waybar/scripts/mediaplayer.py --player spotify",
+  //   "format": "  󰁔 {}",
+  //   "return-type": "json",
+  //   "on-click": "playerctl play-pause",
+  //   "on-scroll-up": "playerctl previous",
+  //   "on-scroll-down": "playerctl next"
+  // },
+  "wireplumber": {
+    "format": "{volume}%   ",
+    "format-muted": "",
+    "on-click": "qpwgraph",
+    "format-icons": [
+      "󰕿",
+      "󰖀",
+      "󰕾"
+    ]
+  },
+}
