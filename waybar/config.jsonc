@@ -8,7 +8,8 @@
   "modules-left": [
     "custom/start",
     "tray",
-    "custom/spotify"
+    "custom/spotify",
+    "idle_inhibitor"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -18,8 +19,16 @@
     "pulseaudio",
     "backlight",
     "battery",
-    "clock",
+    "clock"
   ],
+  "idle_inhibitor": {
+    "format": "{icon} ",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    },
+    "timeout": 90
+  },
   "custom/start": {
     "format": "󰣇 Start",
     "tooltip": false,
