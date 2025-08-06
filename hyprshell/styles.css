@@ -1,6 +1,6 @@
 :root {
-    --border-color: rgba(90, 90, 120, 0.4);
-    --border-color-active: rgba(03fcb1aa);
+    --border-color: #008080;
+    --border-color-active: #008080;
 
     --bg-color: #c0c0c0;
     --bg-color-hover: #c0c0c0;

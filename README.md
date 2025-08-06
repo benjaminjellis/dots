@@ -9,3 +9,9 @@ to set up required dirs run
 ```
 sh init.sh
 ```
+
+To install some basic deps
+
+```
+sudo pacman -S --needed - < packages.txt
+```

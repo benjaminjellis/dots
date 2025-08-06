@@ -1,0 +1,8 @@
+hyprland
+hyprpaper
+hypridle
+hyprlock
+waybar
+btop
+neovim
+swaync

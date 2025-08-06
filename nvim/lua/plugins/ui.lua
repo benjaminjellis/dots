@@ -6,9 +6,6 @@ local batteryConfig = function()
 end
 
 return {
-  -- add nvim-web-devicons for linux
-  { "nvim-tree/nvim-web-devicons", lazy = false, opts = {} },
-  -- change bufferline tab appearance
   {
     "akinsho/bufferline.nvim",
     opts = {

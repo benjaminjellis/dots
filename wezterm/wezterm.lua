@@ -198,7 +198,7 @@ config.font = wezterm.font({
 })
 
 if is_linux() then
-	config.font_size = 13
+	config.font_size = 12
 	config.window_decorations = "NONE"
 end
 
