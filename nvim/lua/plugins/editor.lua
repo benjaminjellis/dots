@@ -118,9 +118,9 @@ return {
     end,
   },
   -- inlay hints moved to the end of the line rather than being inline
-  {
-    "chrisgrieser/nvim-lsp-endhints",
-    event = "LspAttach",
-    opts = {},
-  },
+  -- {
+  --   "chrisgrieser/nvim-lsp-endhints",
+  --   event = "LspAttach",
+  --   opts = {},
+  -- },
 }

@@ -2,7 +2,9 @@ hyprland
 hyprpaper
 hypridle
 hyprlock
+hyprshot
 waybar
 btop
 neovim
 swaync
+wl-clipboard
