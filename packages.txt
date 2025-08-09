@@ -3,6 +3,7 @@ hyprpaper
 hypridle
 hyprlock
 hyprshot
+hyprsunset
 waybar
 btop
 neovim
