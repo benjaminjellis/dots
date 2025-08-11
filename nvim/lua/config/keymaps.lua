@@ -1,4 +1,12 @@
 vim.keymap.set({ "n", "v" }, ";", ":", { remap = true })
 vim.keymap.set("n", "<leader>cb", "<cmd>%bd|e#<cr>")
-vim.keymap.set("n", "<leader>ft", "<cmd>FloatermToggle<cr>", { desc = "Terminal (Root Dir)" })
-vim.keymap.set("n", "<leader>fT", "<cmd>FloatermToggle<cr>", { desc = "Terminal (cwdr)" })
+
+vim.keymap.set("n", "<leader>ft", function()
+  Snacks.terminal()
+end, { desc = "Terminal (Root Dir)" })
+vim.keymap.set("n", "<leader>fT", function()
+  Snacks.terminal(nil, { cwd = LazyVim.root() })
+end, { desc = "Terminal (cwdr)" })
+
+vim.keymap.set("n", "<leader>sG", LazyVim.pick("live_grep"), { desc = "Grep (cwd)", remap = true })
+vim.keymap.set("n", "<leader>sg", LazyVim.pick("live_grep", { root = false }), { desc = "Grep (root)", remap = true })
