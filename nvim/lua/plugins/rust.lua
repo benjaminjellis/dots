@@ -67,7 +67,7 @@ return {
           vim.keymap.set("n", "<leader>ce", function()
             vim.cmd.RustLsp("expandMacro")
           end, { desc = "Expand Macro", buffer = bufnr })
-          vim.keymap.set("n", "<C-k>", function()
+          vim.keymap.set("n", "<S-k>", function()
             vim.cmd.RustLsp({ "hover", "actions" })
           end, { desc = "Hover Action", buffer = bufnr })
           vim.keymap.set("n", "<leader>dr", function()
