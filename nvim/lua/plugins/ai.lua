@@ -31,14 +31,7 @@ return {
           }
         end,
         models = {
-          "gemini-2.5-flash-preview-05-20",
-          "gemini-2.5-pro-preview-05-06",
-          "gemini-1.5-pro-latest",
-          "gemini-1.5-flash-latest",
-          "gemini-2.5-pro-exp-03-25",
-          "gemini-2.0-flash-lite",
-          "gemini-2.0-flash-thinking-exp",
-          "gemma-3-27b-it",
+          "gemini-2.5-flash-lite",
         },
         preprocess_payload = function(payload)
           local contents = {}

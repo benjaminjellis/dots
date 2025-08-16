@@ -35,7 +35,6 @@ window#waybar {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #404040;
     box-shadow: 1px 1px 1px 0px #000000;
-
 }
 
 #workspaces button:hover {
@@ -45,7 +44,12 @@ window#waybar {
 }
 
 #workspaces button.active{
-    background: #008080;
+    background: #E0E0E0;
+    border-left: 0.5px solid #000000;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    box-shadow: -1px -0.5px 0px 0px #000000;
     color: #000000;
 }
 
@@ -53,7 +57,6 @@ window#waybar {
     padding: 5px 5px;
     margin: 5px 3px;
     font-weight: bold;
-    background: url('/home/fribbit/.icons/Chicago95-tux/places/scalable/start-here.svg');
     background-position: left;
     background-repeat: no-repeat;
     background-size: contain;
@@ -64,7 +67,6 @@ window#waybar {
 }
 
 #custom-start:hover {
-    background: url('/home/fribbit/.icons/Chicago95-tux/places/scalable/start-here.svg');
     background-position: left;
     background-repeat: no-repeat;
     background-size: contain;
@@ -73,7 +75,6 @@ window#waybar {
 }
 
 #custom-start:active {
-    background: url('/home/fribbit/.icons/Chicago95-tux/places/scalable/start-here.svg');
     background-position: left;
     background-repeat: no-repeat;
     background-size: contain;
@@ -102,7 +103,6 @@ window#waybar {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #404040;
     box-shadow: 1px 1px 1px 0px #000000;
-    background-image: url('/home/fribbit/.icons/Chicago95-tux/devices/scalable/battery.svg');
     background-position: right;
     background-size: 30%;
     background-repeat: no-repeat;
@@ -120,7 +120,6 @@ window#waybar {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #404040;
     box-shadow: 1px 1px 1px 0px #000000;
-    background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/sunny.svg');
     background-position: right;
     background-size: 30%;
     background-repeat: no-repeat;
@@ -138,7 +137,6 @@ window#waybar {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #404040;
     box-shadow: 1px 1px 1px 0px #000000;
-    background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/audio-volume-high.svg');
     background-position: right;
     background-size: 30%;
     background-repeat: no-repeat;
@@ -160,7 +158,6 @@ window#waybar {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #404040;
     box-shadow: 1px 1px 1px 0px #000000;
-    background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/audio-volume-high.svg');
     background-position: right;
     background-size: 30%;
     background-repeat: no-repeat;
@@ -178,7 +175,6 @@ window#waybar {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #404040;
     box-shadow: 1px 1px 1px 0px #000000;
-    background-image: url('/home/fribbit/.icons/Chicago95-tux/devices/scalable/computer-laptop.svg');
     background-position: right;
     background-size: 30%;
     background-repeat: no-repeat;
@@ -196,7 +192,6 @@ window#waybar {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #404040;
     box-shadow: 1px 1px 1px 0px #000000;
-    background-image: url('/home/fribbit/.icons/Chicago95-tux/devices/scalable/processor.svg');
     background-position: right;
     background-size: 30%;
     background-repeat: no-repeat;
@@ -214,7 +209,6 @@ window#waybar {
     border-top: 1px solid #ffffff;
     border-bottom: 1px solid #404040;
     box-shadow: 1px 1px 1px 0px #000000;
-    background-image: url('/home/fribbit/.icons/Chicago95-tux/status/scalable/weather-few-clouds.svg');
     background-position: right;
     background-size: 30%;
     background-repeat: no-repeat;
@@ -233,7 +227,6 @@ window#waybar {
     border-bottom: 1px solid #ffffff;
     border-right: 1px solid #ffffff;
     box-shadow: -1px -0.5px 0px 0px #000000;
-    background-image: url("/home/fribbit/.icons/Chicago95-tux/apps/scalable/clock.svg");
     background-position: right;
     background-size: 13%;
     background-repeat: no-repeat;

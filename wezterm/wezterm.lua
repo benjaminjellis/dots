@@ -1,6 +1,8 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
+local config = wezterm.config_builder()
 
+-- helpers
 local is_linux = function()
 	return wezterm.target_triple:find("linux") ~= nil
 end
@@ -9,23 +11,10 @@ local is_darwin = function()
 	return wezterm.target_triple:find("darwin") ~= nil
 end
 
-local config = wezterm.config_builder()
-
--- try to load the private module
-local loaded, private = pcall(function()
-	return require("private")
-end)
-
-if loaded then
-	private.run(config)
-end
-
--- on macOS when wezterm is opened make it fill the screen
-if is_darwin() then
-	wezterm.on("gui-startup", function(cmd)
-		local _, _, window = wezterm.mux.spawn_window(cmd or {})
-		window:gui_window():maximize()
-	end)
+local function extend(dst, src)
+	for i = 1, #src do
+		dst[#dst + 1] = src[i]
+	end
 end
 
 -- Integration with neovim panes
@@ -36,6 +25,15 @@ local function is_vi_process(pane)
 	-- return pane:get_foreground_process_name():find('n?vim') ~= nil
 	-- Use get_title as it works for multiplexed sessions too
 	return pane:get_title():find("n?vim") ~= nil
+end
+
+-- try to load the private module
+local loaded, private = pcall(function()
+	return require("private")
+end)
+
+if loaded then
+	private.run(config)
 end
 
 local function conditional_activate_pane(window, pane, pane_direction, vim_direction)
@@ -113,6 +111,53 @@ local function set_up_dev_panes(launch_spotify)
 	end)
 end
 
+-- key bdinings
+config.keys = {
+	-- tmux bindings for switching between panes
+	{ key = "h", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Left") },
+	{ key = "j", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Down") },
+	{ key = "k", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Up") },
+	{ key = "l", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Right") },
+
+	{
+		key = "D",
+		mods = "CTRL|SHIFT",
+		action = set_up_dev_panes(false),
+	},
+	{
+		key = "S",
+		mods = "CTRL|SHIFT",
+		action = set_up_dev_panes(true),
+	},
+	{
+		key = "|",
+		mods = "CTRL|SHIFT",
+		action = set_up_horizontal_panes(),
+	},
+	{
+		key = "B",
+		mods = "CTRL|SHIFT",
+		action = set_up_vertical_panes(),
+	},
+	{
+		key = "H",
+		mods = "LEADER",
+		action = wezterm.action.AdjustPaneSize({ "Left", 5 }),
+	},
+	{
+		key = "J",
+		mods = "LEADER",
+		action = wezterm.action.AdjustPaneSize({ "Down", 5 }),
+	},
+	{ key = "K", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
+	{
+		key = "L",
+		mods = "LEADER",
+		action = wezterm.action.AdjustPaneSize({ "Right", 5 }),
+	},
+}
+
+-- colours
 local naysayer_colors = {
 	foreground = "#d0b892",
 	background = "#062625",
@@ -184,6 +229,7 @@ config.color_schemes = {
 }
 
 config.leader = { key = "a", mods = "CTRL" }
+
 -- enabling these make the terminal transparent
 config.window_background_opacity = 0.95
 config.macos_window_background_blur = 70
@@ -197,16 +243,6 @@ config.font = wezterm.font({
 	harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
 })
 
-if is_linux() then
-	config.font_size = 12
-	config.window_decorations = "NONE"
-end
-
-if is_darwin() then
-	config.font_size = 18
-	config.window_decorations = "RESIZE"
-end
-
 config.hide_tab_bar_if_only_one_tab = true
 config.max_fps = 120
 config.window_padding = {
@@ -216,49 +252,25 @@ config.window_padding = {
 	bottom = 0,
 }
 
-config.keys = {
-	-- tmux bindings for switching between panes
-	{ key = "h", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Left") },
-	{ key = "j", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Down") },
-	{ key = "k", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Up") },
-	{ key = "l", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Right") },
+-- OS Specific config
 
-	{
-		key = "D",
-		mods = "CTRL|SHIFT",
-		action = set_up_dev_panes(false),
-	},
-	{
-		key = "S",
-		mods = "CTRL|SHIFT",
-		action = set_up_dev_panes(true),
-	},
-	{
-		key = "|",
-		mods = "CTRL|SHIFT",
-		action = set_up_horizontal_panes(),
-	},
-	{
-		key = "B",
-		mods = "CTRL|SHIFT",
-		action = set_up_vertical_panes(),
-	},
-	{
-		key = "H",
-		mods = "LEADER",
-		action = wezterm.action.AdjustPaneSize({ "Left", 5 }),
-	},
-	{
-		key = "J",
-		mods = "LEADER",
-		action = wezterm.action.AdjustPaneSize({ "Down", 5 }),
-	},
-	{ key = "K", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
-	{
-		key = "L",
-		mods = "LEADER",
-		action = wezterm.action.AdjustPaneSize({ "Right", 5 }),
-	},
-}
+if is_darwin() then
+	wezterm.on("gui-startup", function(cmd)
+		local _, _, window = wezterm.mux.spawn_window(cmd or {})
+		window:gui_window():maximize()
+	end)
+
+	config.font_size = 18
+	config.window_decorations = "RESIZE"
+end
+
+if is_linux() then
+	config.font_size = 12
+	config.window_decorations = "NONE"
+	extend(config.keys, {
+		{ key = "q", mods = "CTRL", action = wezterm.action.SendKey({ key = "c", mods = "CTRL" }) },
+		{ key = "c", mods = "CTRL", action = wezterm.action.CopyTo("Clipboard") },
+	})
+end
 
 return config
