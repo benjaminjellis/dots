@@ -9,3 +9,6 @@ btop
 neovim
 swaync
 wl-clipboard
+rustup
+git
+jujutsu
