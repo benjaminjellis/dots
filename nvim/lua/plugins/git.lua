@@ -3,7 +3,6 @@ return {
   {
     "benjaminjellis/jj.nvim",
     cmd = "JJ",
-    branch = "push-kxsumqyokuts",
     lazy = false,
     config = function()
       require("jj").setup({})
