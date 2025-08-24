@@ -1,8 +1,9 @@
 -- git related plugins
 return {
   {
-    "nicolasgb/jj.nvim",
-    cmd = "J",
+    "benjaminjellis/jj.nvim",
+    cmd = "JJ",
+    branch = "push-kxsumqyokuts",
     lazy = false,
     config = function()
       require("jj").setup({})
@@ -13,6 +14,10 @@ return {
       vim.keymap.set("n", "<leader>js", cmd.status, { desc = "JJ status" })
       vim.keymap.set("n", "<leader>dj", cmd.diff, { desc = "JJ diff" })
       vim.keymap.set("n", "<leader>sj", cmd.squash, { desc = "JJ squash" })
+      vim.keymap.set("n", "<leader>jP", cmd.push_to_branch, { desc = "JJ git push to branch" })
+      vim.keymap.set("n", "<leader>jp", cmd.push, { desc = "JJ git push" })
+      vim.keymap.set("n", "<leader>jb", cmd.set_bookmark, { desc = "JJ set bookmark" })
+      vim.keymap.set("n", "<leader>jf", cmd.fetch, { desc = "JJ git fetch" })
 
       -- Pickers
       vim.keymap.set("n", "<leader>gj", function()
