@@ -265,7 +265,7 @@ if is_darwin() then
 end
 
 if is_linux() then
-	config.font_size = 12
+	config.font_size = 13
 	config.window_decorations = "NONE"
 	extend(config.keys, {
 		{ key = "q", mods = "CTRL", action = wezterm.action.SendKey({ key = "c", mods = "CTRL" }) },
