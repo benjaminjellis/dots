@@ -5,15 +5,6 @@ local batteryConfig = function()
   }
 end
 
--- run a command
-local function cmd_out(cmd)
-  local ok, out = pcall(vim.fn.systemlist, cmd)
-  if not ok or vim.v.shell_error ~= 0 or #out == 0 then
-    return ""
-  end
-  return out[1]
-end
-
 return {
   {
     "akinsho/bufferline.nvim",
@@ -97,26 +88,6 @@ return {
       local lualine_require = require("lualine_require")
       lualine_require.require = require
 
-      local jj_change = {
-        function()
-          return " "
-            .. cmd_out({
-              "jj",
-              "log",
-              "--revisions",
-              "@",
-              "--no-graph",
-              "--ignore-working-copy",
-              "--color",
-              "never",
-              "--limit",
-              "1",
-              "--template",
-              " separate(' ',change_id.shortest(4), bookmarks)",
-            })
-        end,
-      }
-
       local icons = LazyVim.config.icons
       local batteryStatus = {
         function()
@@ -136,7 +107,7 @@ return {
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { jj_change },
+          lualine_b = { "branch" },
 
           lualine_c = {
             LazyVim.lualine.root_dir(),
