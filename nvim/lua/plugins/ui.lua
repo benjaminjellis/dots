@@ -5,6 +5,28 @@ local batteryConfig = function()
   }
 end
 
+local jj_change_id_cache = ""
+
+-- returns the jj change id
+local function jj_change_id()
+  return jj_change_id_cache
+end
+
+local function update_jj_change_id()
+  local cmd =
+    "jj log --revisions @ --no-graph --ignore-working-copy --color never --limit 1 --template 'change_id.shortest(4)' 2>/dev/null"
+  local handle = io.popen(cmd)
+  if handle then
+    local result = handle:read("*a")
+    handle:close()
+    if result and result ~= "" then
+      jj_change_id_cache = " " .. result:gsub("%s+", "")
+    else
+      jj_change_id_cache = ""
+    end
+  end
+end
+
 return {
   {
     "akinsho/bufferline.nvim",
@@ -84,6 +106,11 @@ return {
       end
     end,
     opts = function()
+      -- update jj change id of BufEnter as different Buffer may be on different repos
+      vim.api.nvim_create_autocmd("BufEnter", {
+        callback = update_jj_change_id,
+      })
+
       -- PERF: we don't need this lualine require madness 🤷
       local lualine_require = require("lualine_require")
       lualine_require.require = require
@@ -100,14 +127,16 @@ return {
       local opts = {
         options = {
           theme = "auto",
-          -- component_separators = { left = "", right = "" },
-          -- section_separators = { left = "", right = "" },
+          component_separators = { left = "", right = "" },
+          section_separators = { left = "", right = "" },
           globalstatus = vim.o.laststatus == 3,
           disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter", "snacks_dashboard" } },
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { "branch" },
+          lualine_b = {
+            jj_change_id,
+          },
 
           lualine_c = {
             LazyVim.lualine.root_dir(),
