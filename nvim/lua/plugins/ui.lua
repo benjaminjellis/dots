@@ -15,7 +15,8 @@ end
 local function update_jj_change_id()
   local cmd =
     [[jj log --revisions @ --no-graph --ignore-working-copy --color=never --limit 1 --template 'separate(" ", change_id.shortest(4), bookmarks.map(|r| r.name()).join(" "))']]
-  local handle = io.popen(cmd)
+
+  local handle = io.popen(cmd .. " 2>/dev/null") -- redirects stderr to dev/null
   if handle then
     local result = handle:read("*a")
     handle:close()
