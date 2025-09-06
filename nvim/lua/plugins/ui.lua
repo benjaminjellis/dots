@@ -5,29 +5,29 @@ local batteryConfig = function()
   }
 end
 
-local jj_change_id_cache = ""
-
--- returns the jj change id
-local function jj_change_id()
-  return jj_change_id_cache
-end
-
-local function update_jj_change_id()
-  local cmd =
-    [[jj log --revisions @ --no-graph --ignore-working-copy --color=never --limit 1 --template 'separate(" ", change_id.shortest(4), bookmarks.map(|r| r.name()).join(" "))']]
-
-  local handle = io.popen(cmd .. " 2>/dev/null") -- redirects stderr to dev/null
-  if handle then
-    local result = handle:read("*a")
-    handle:close()
-    if result and result ~= "" then
-      jj_change_id_cache = " " .. result
-    else
-      jj_change_id_cache = ""
-    end
-  end
-end
-
+-- local jj_change_id_cache = ""
+--
+-- -- returns the jj change id
+-- local function jj_change_id()
+--   return jj_change_id_cache
+-- end
+--
+-- local function update_jj_change_id()
+--   local cmd =
+--     [[jj log --revisions @ --no-graph --ignore-working-copy --color=never --limit 1 --template 'separate(" ", change_id.shortest(4), bookmarks.map(|r| r.name()).join(" "))']]
+--
+--   local handle = io.popen(cmd .. " 2>/dev/null") -- redirects stderr to dev/null
+--   if handle then
+--     local result = handle:read("*a")
+--     handle:close()
+--     if result and result ~= "" then
+--       jj_change_id_cache = " " .. result
+--     else
+--       jj_change_id_cache = ""
+--     end
+--   end
+-- end
+--
 return {
   {
     "akinsho/bufferline.nvim",
@@ -91,12 +91,16 @@ return {
   {
     "justinhj/battery.nvim",
   },
+  {
+    "benjaminjellis/jjinfo.nvim",
+  },
   -- lualine
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     init = function()
       require("battery").setup(batteryConfig())
+      require("jjinfo").setup()
       vim.g.lualine_laststatus = vim.o.laststatus
       if vim.fn.argc(-1) > 0 then
         -- set an empty statusline till lualine loads
@@ -107,11 +111,6 @@ return {
       end
     end,
     opts = function()
-      -- update jj change id of BufEnter as different Buffer may be on different repos
-      vim.api.nvim_create_autocmd("BufEnter", {
-        callback = update_jj_change_id,
-      })
-
       -- PERF: we don't need this lualine require madness 🤷
       local lualine_require = require("lualine_require")
       lualine_require.require = require
@@ -120,6 +119,11 @@ return {
       local batteryStatus = {
         function()
           return require("battery").get_status_line()
+        end,
+      }
+      local jjInfo = {
+        function()
+          return require("jjinfo").get_jj_info()
         end,
       }
 
@@ -136,7 +140,7 @@ return {
         sections = {
           lualine_a = { "mode" },
           lualine_b = {
-            jj_change_id,
+            jjInfo,
           },
 
           lualine_c = {
