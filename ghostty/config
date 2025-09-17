@@ -1,0 +1,74 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   /home/ben/.config/ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+# font-family = Iosevka
+# window-padding-x = 2
+#
+# # Spacing around the equals sign does not matter.
+# # All of these are identical:
+# key=value
+# key= value
+# key =value
+# key = value
+#
+# # Any line beginning with a # is a comment. It's not possible to put
+# # a comment after a config option, since it would be interpreted as a
+# # part of the value. For example, this will have a value of "#123abc":
+# background = #123abc
+#
+# # Empty values are used to reset config keys to default.
+# key =
+#
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
+#
+background = #062625
+foreground = #d0b892
+selection-foreground = #d0b892
+selection-background = #8cde94
+cursor-color=#d0b892
+palette = 0=#0b3335
+palette = 1=#F92672
+palette = 2=#8cde94
+palette = 3=#E6DB74
+palette = 4=#66D9EF
+palette = 5=#AE81FF
+palette = 6=#A1EFE4
+palette = 7=#ffffff
+palette = 8=#7a8478
+palette = 9=#F92672
+palette = 10=#8cde94
+palette = 11=#E6DB74
+palette = 12=#66D9EF
+palette = 13=#F92672
+palette = 14=#83c092
+palette = 15=#ffffff
+cursor-style = block
+shell-integration-features = no-cursor
+
+font-family = "Liga SFMono Nerd Font"
+font-style = "DemiBold"
+font-size = 14
+font-thicken = true
+font-feature = "calt, liga, dlig, ss01, ss02, ss03, ss04, ss05, ss06, ss07, ss08"
+keybind = performable:ctrl+c=copy_to_clipboard
