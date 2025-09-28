@@ -18,7 +18,6 @@ return {
       vim.keymap.set("n", "<leader>jb", cmd.set_bookmark, { desc = "JJ set bookmark" })
       vim.keymap.set("n", "<leader>jf", cmd.fetch, { desc = "JJ git fetch" })
 
-      -- Pickers
       vim.keymap.set("n", "<leader>gj", function()
         require("jj.picker").status()
       end, { desc = "JJ Picker status" })
@@ -26,14 +25,12 @@ return {
         require("jj.picker").file_history()
       end, { desc = "JJ Picker file history" })
 
-      -- Some functions like `describe` or `log` can take parameters
       vim.keymap.set("n", "<leader>jl", function()
         cmd.log({
           revisions = "'all()'",
         })
       end, { desc = "JJ log" })
 
-      -- This is an alias i use for moving bookmarks its so good
       vim.keymap.set("n", "<leader>jt", function()
         cmd.j("tug")
         cmd.log({})
