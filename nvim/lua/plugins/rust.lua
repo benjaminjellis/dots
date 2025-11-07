@@ -5,7 +5,6 @@ return {
       root = { "Cargo.toml", "rust-project.json" },
     })
   end,
-
   -- LSP for Cargo.toml
   {
     "Saecki/crates.nvim",
