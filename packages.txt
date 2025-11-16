@@ -12,3 +12,9 @@ wl-clipboard
 rustup
 git
 jujutsu
+wireplumber
+brightnessctl
+playerctl
+blueman
+less
+ripgrep
