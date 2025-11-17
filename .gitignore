@@ -1,9 +1,8 @@
 fish/completions
 fish/conf.d
-fish/functions
 fish/themes
 fish/config.local.fish
 fish/fish_plugins
-fish/fish_variables.5VOaeu
+fish/fish_variables.*
 fish/fish_variables.rPAxpr
 fish/fish_variables
