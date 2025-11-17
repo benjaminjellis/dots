@@ -1,5 +1,6 @@
-# Only run the rest in interactive sessions
-status is-interactive; or return
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
 
 # ---- PATHS ----
 # Use $HOME instead of a hard-coded username
