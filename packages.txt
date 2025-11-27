@@ -10,6 +10,7 @@ neovim
 swaync
 wl-clipboard
 rustup
+rust-analyzer
 git
 jujutsu
 wireplumber
