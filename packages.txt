@@ -18,3 +18,4 @@ playerctl
 blueman
 less
 ripgrep
+unzip
