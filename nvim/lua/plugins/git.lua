@@ -1,45 +1,7 @@
 -- git related plugins
 return {
-  {
-    "benjaminjellis/jj.nvim",
-    cmd = "JJ",
-    lazy = false,
-    config = function()
-      require("jj").setup({})
-      local cmd = require("jj.cmd")
-      vim.keymap.set("n", "<leader>jd", cmd.describe, { desc = "JJ describe" })
-      vim.keymap.set("n", "<leader>je", cmd.edit, { desc = "JJ edit" })
-      vim.keymap.set("n", "<leader>jn", cmd.new, { desc = "JJ new" })
-      vim.keymap.set("n", "<leader>js", cmd.status, { desc = "JJ status" })
-      vim.keymap.set("n", "<leader>dj", cmd.diff, { desc = "JJ diff" })
-      vim.keymap.set("n", "<leader>sj", cmd.squash, { desc = "JJ squash" })
-      vim.keymap.set("n", "<leader>jP", cmd.push_to_branch, { desc = "JJ git push to branch" })
-      vim.keymap.set("n", "<leader>jp", cmd.push, { desc = "JJ git push" })
-      vim.keymap.set("n", "<leader>jb", cmd.set_bookmark, { desc = "JJ set bookmark" })
-      vim.keymap.set("n", "<leader>jf", cmd.fetch, { desc = "JJ git fetch" })
-
-      vim.keymap.set("n", "<leader>gj", function()
-        require("jj.picker").status()
-      end, { desc = "JJ Picker status" })
-      vim.keymap.set("n", "<leader>gl", function()
-        require("jj.picker").file_history()
-      end, { desc = "JJ Picker file history" })
-
-      vim.keymap.set("n", "<leader>jl", function()
-        cmd.log({
-          revisions = "'all()'",
-        })
-      end, { desc = "JJ log" })
-
-      vim.keymap.set("n", "<leader>jt", function()
-        cmd.j("tug")
-        cmd.log({})
-      end, { desc = "JJ tug" })
-    end,
-  },
   -- depends on the git extra for highlighting and auto-completion of github issues/prs
   { import = "lazyvim.plugins.extras.lang.git" },
-
   {
     "folke/snacks.nvim",
     keys = { -- disable conflicting keymaps
@@ -49,7 +11,6 @@ return {
       { "<leader>gP", false },
     },
   },
-
   -- Octo
   {
     "pwntester/octo.nvim",

@@ -55,15 +55,6 @@ return {
       },
     },
   },
-  {
-    "nvim-lspconfig",
-    opts = {
-      diagnostics = {
-        virtual_text = false,
-        virtual_lines = false,
-      },
-    },
-  },
   -- battery status
   {
     "justinhj/battery.nvim",

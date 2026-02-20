@@ -1,3 +1,5 @@
+local diagnostics = "rust-analyzer"
+
 return {
   recommended = function()
     return LazyVim.extras.wants({
@@ -84,23 +86,20 @@ return {
               },
             },
             -- Add clippy lints for Rust if using rust-analyzer
-            checkOnSave = true,
+            checkOnSave = diagnostics == "rust-analyzer",
+            diagnostics = {
+              enable = diagnostics == "rust-analyzer",
+            },
             rustfmt = {
               extraArgs = { "--config", "imports_granularity=crate" },
             },
             -- Enable diagnostics if using rust-analyzer
-            diagnostics = {
-              enable = true,
-            },
             procMacro = {
               enable = true,
-              ignored = {
-                ["async-trait"] = { "async_trait" },
-                ["napi-derive"] = { "napi" },
-                ["async-recursion"] = { "async_recursion" },
-              },
             },
             files = {
+              -- Avoid Roots Scanned hanging, see https://github.com/rust-lang/rust-analyzer/issues/12613#issuecomment-2096386344
+              watcher = "client",
               excludeDirs = {
                 ".direnv",
                 ".git",
@@ -136,6 +135,17 @@ return {
     end,
   },
   -- Correctly setup lspconfig for Rust 🚀
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        bacon_ls = {
+          enabled = diagnostics == "bacon-ls",
+        },
+        rust_analyzer = { enabled = false },
+      },
+    },
+  },
   {
     "nvim-neotest/neotest",
     optional = true,
