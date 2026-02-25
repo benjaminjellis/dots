@@ -41,20 +41,20 @@ return {
     end,
   },
   -- use taplo for formatting toml / Cargo.toml
-  {
-    recommended = function()
-      return LazyVim.extras.wants({
-        ft = "toml",
-        root = "*.toml",
-      })
-    end,
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        taplo = {},
-      },
-    },
-  },
+  -- {
+  --   recommended = function()
+  --     return LazyVim.extras.wants({
+  --       ft = "toml",
+  --       root = "*.toml",
+  --     })
+  --   end,
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       taplo = {},
+  --     },
+  --   },
+  -- },
   {
     "mrcjkb/rustaceanvim",
     version = vim.fn.has("nvim-0.10.0") == 0 and "^4" or false,
