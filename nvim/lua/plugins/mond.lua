@@ -32,7 +32,7 @@ return {
     opts = {
       servers = {
         mond = {
-          cmd = { "mond", "lsp" },
+          cmd = { "bahn", "lsp" },
           filetypes = { "mond" },
           root_markers = { "mond.toml", ".git" },
         },

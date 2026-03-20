@@ -85,6 +85,9 @@ return {
                 enable = true,
               },
             },
+            check = {
+              features = "all",
+            },
             -- Add clippy lints for Rust if using rust-analyzer
             checkOnSave = diagnostics == "rust-analyzer",
             diagnostics = {

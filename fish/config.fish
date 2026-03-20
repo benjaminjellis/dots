@@ -45,3 +45,4 @@ function fish_greeting
 end
 
 test -r '/home/ben/.opam/opam-init/init.fish' && source '/home/ben/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
+direnv hook fish | source
