@@ -86,6 +86,8 @@ return {
               },
             },
             check = {
+              command = "clippy",
+              extraArgs = { "--no-deps" },
               features = "all",
             },
             -- Add clippy lints for Rust if using rust-analyzer
