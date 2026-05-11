@@ -22,7 +22,6 @@ local ivy = [[
          /    |        
    (    /     |        
     ---/___)| |         ]]
-local theRewardForGoodWork = "The Reward For Good Work Is More Work"
 return {
   {
     "folke/snacks.nvim",
@@ -36,7 +35,7 @@ return {
         },
 
         preset = {
-          header = logo .. "\n\n" .. ivy .. "\n\n\n" .. theRewardForGoodWork,
+          header = logo .. "\n\n" .. ivy .. "\n\n\n",
           ---@type snacks.dashboard.Item[]
           keys = {
             { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
