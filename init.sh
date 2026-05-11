@@ -4,7 +4,7 @@
 mkdir -p hypr/source
 
 # Create the files
-touch hypr/source/monitors.conf
-touch hypr/source/workspaces.conf
+touch hypr/source/monitors.lua
+touch hypr/source/workspaces.lua
 
-echo "Created hypr/source with monitors.conf and workspaces.conf"
+echo "Created hypr/source with monitors.lua and workspaces.lua"
