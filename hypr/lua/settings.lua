@@ -76,6 +76,11 @@ return function()
 	})
 
 	hl.device({
+		name = "mechboards-corne-pro-r2g",
+		kb_layout = "us",
+	})
+
+	hl.device({
 		name = "bastard-keyboards-dilemma-(3x5+3)-assembled",
 		kb_layout = "us",
 	})
