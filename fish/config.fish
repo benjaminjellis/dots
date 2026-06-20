@@ -6,6 +6,7 @@ end
 # Use $HOME instead of a hard-coded username
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
+fish_add_path /Users/ben/go/bin
 
 # ---- ENV VARS (NON-SECRET) ----
 # Safe to keep public

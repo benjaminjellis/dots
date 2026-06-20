@@ -1,5 +1,5 @@
 return {
-  { "benjaminjellis/ns.nvim", name = "ns" },
+  { "benjaminjellis/ns.nvim", name = "ns", branch = "go_work" },
   {
     "catppuccin/nvim",
     name = "catppuccin",
