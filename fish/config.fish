@@ -33,6 +33,10 @@ function update_submodule
     git submodule update --remote
 end
 
+function jjb
+    jj bookmark set $argv[1] && jj bookmark track $argv[1] --remote=origin
+end
+
 function kill_windows
     pkill windows
 end
