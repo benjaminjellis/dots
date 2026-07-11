@@ -68,9 +68,6 @@ return {
           vim.keymap.set("n", "<leader>ce", function()
             vim.cmd.RustLsp("expandMacro")
           end, { desc = "Expand Macro", buffer = bufnr })
-          vim.keymap.set("n", "K", function()
-            vim.cmd.RustLsp({ "hover", "actions" })
-          end, { desc = "Hover Action", buffer = bufnr })
           vim.keymap.set("n", "<leader>dr", function()
             vim.cmd.RustLsp("debuggables")
           end, { desc = "Rust Debuggables", buffer = bufnr })
@@ -144,10 +141,29 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        ["*"] = {
+          keys = {
+            {
+              "K",
+              function()
+                if vim.bo.filetype == "rust" then
+                  vim.cmd.RustLsp({ "hover", "actions" })
+                else
+                  vim.lsp.buf.hover()
+                end
+              end,
+              desc = "Hover",
+            },
+          },
+        },
+
         bacon_ls = {
           enabled = diagnostics == "bacon-ls",
         },
-        rust_analyzer = { enabled = false },
+
+        rust_analyzer = {
+          enabled = false,
+        },
       },
     },
   },
