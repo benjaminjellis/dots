@@ -3,6 +3,16 @@ return {
   -- depends on the git extra for highlighting and auto-completion of github issues/prs
   { import = "lazyvim.plugins.extras.lang.git" },
   {
+    "nicolasgb/jj.nvim",
+    version = "*",
+    config = function()
+      require("jj").setup({})
+    end,
+    keys = {
+      { "<leader>jd", "<cmd>J describe<CR>", desc = "jj desc" },
+    },
+  },
+  {
     "folke/snacks.nvim",
     keys = { -- disable conflicting keymaps
       { "<leader>gi", false },
