@@ -37,6 +37,20 @@ function jjb
     jj bookmark set $argv[1] && jj bookmark track $argv[1] --remote=origin
 end
 
+function jjreview
+    if test (count $argv) -ne 1
+        echo "usage: jjreview <branch>" >&2
+        return 2
+    end
+
+    set -l branch $argv[1]
+    set branch (string replace -r '^origin/' '' -- $branch)
+    set branch (string replace -r '@origin$' '' -- $branch)
+
+    jj git fetch --remote origin --branch $branch
+    and jj new "$branch@origin"
+end
+
 function kill_windows
     pkill windows
 end
