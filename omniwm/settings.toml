@@ -842,3 +842,19 @@ name = "7"
 
 [workspaces.monitorAssignment]
 type = "secondary"
+
+[[workspaces]]
+id = "B6860AB8-0289-4BBA-93DC-ED58981DBBBB"
+layoutType = "dwindle"
+name = "8"
+
+[workspaces.monitorAssignment]
+type = "main"
+
+[[workspaces]]
+id = "03B64C31-9CBA-416A-8C33-B0B71E336A10"
+layoutType = "dwindle"
+name = "9"
+
+[workspaces.monitorAssignment]
+type = "main"

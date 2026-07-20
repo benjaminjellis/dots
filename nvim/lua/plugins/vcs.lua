@@ -3,8 +3,28 @@ return {
   -- depends on the git extra for highlighting and auto-completion of github issues/prs
   { import = "lazyvim.plugins.extras.lang.git" },
   {
-    "esmuellert/codediff.nvim",
-    cmd = "CodeDiff",
+    "clabby/difftastic.nvim",
+    lazy = false,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      -- optional: only needed for :DifftPick
+      "folke/snacks.nvim",
+    },
+    config = function()
+      require("difftastic-nvim").setup({
+        download = true, -- Auto-download pre-built binary
+        -- ]c/[c collide with LazyVim's treesitter-textobjects "class" motion, which
+        -- re-attaches on FileType (fired when diff.lua sets filetype for highlighting)
+        -- and clobbers difftastic's buffer-local maps. Rebind off ]c/[c to avoid it.
+        keymaps = {
+          next_hunk = "]h",
+          prev_hunk = "[h",
+        },
+        snacks_picker = {
+          enabled = true,
+        },
+      })
+    end,
   },
   {
     "mistweaverco/jujutsu.nvim",
@@ -17,8 +37,60 @@ return {
         end,
         desc = "open jujutsu",
       },
+      {
+        "<leader>jd",
+        function()
+          local root = require("jujutsu.jj.cli").find_workspace_root()
+          if not root then
+            require("jujutsu.notify").error("not a jj workspace")
+            return
+          end
+          require("jujutsu.buffers.editor").open({
+            root = root,
+            on_submit = function()
+              require("jujutsu").refresh()
+            end,
+          })
+        end,
+        desc = "jujutsu describe",
+      },
+      {
+        "<leader>jl",
+        function()
+          local root = require("jujutsu.jj.cli").find_workspace_root()
+          if not root then
+            require("jujutsu.notify").error("not a jj workspace")
+            return
+          end
+          require("jujutsu.buffers.log_view").open(root)
+        end,
+        desc = "jujutsu log",
+      },
     },
-    opts = {},
+    opts = {
+      diff_preset = "difftastic", -- default
+      -- The recursive .jj filewatcher retriggers on jj's own working-copy/op-log
+      -- writes, causing an infinite refresh loop (jj call -> touches .jj ->
+      -- fs_event -> refresh -> jj call -> ...) that pegs the event loop and
+      -- makes nvim unresponsive. Disable until upstream fixes the feedback loop.
+      filewatcher = { enabled = false },
+    },
+    config = function(_, opts)
+      require("jujutsu").setup(opts)
+
+      -- jujutsu.nvim derives JujutsuLualineBookmark's color from the `Function`
+      -- highlight group, which in ns.nvim is just the plain fg color (tan) --
+      -- unreadable against lualine_b's orange background. hl.setup() gets
+      -- re-run on every ColorScheme event and whenever stat/commit views open,
+      -- so wrap it to keep reasserting our override instead of patching once.
+      local hl = require("jujutsu.hl")
+      local orig_setup = hl.setup
+      hl.setup = function(...)
+        orig_setup(...)
+        vim.api.nvim_set_hl(0, "JujutsuLualineBookmark", { fg = "#062625", bold = true })
+      end
+      hl.setup()
+    end,
   },
   {
     "folke/snacks.nvim",

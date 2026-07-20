@@ -89,11 +89,6 @@ return {
           return require("battery").get_status_line()
         end,
       }
-      local jjInfo = {
-        function()
-          return require("jjinfo").get_jj_info()
-        end,
-      }
 
       vim.o.laststatus = vim.g.lualine_laststatus
 
