@@ -3,14 +3,22 @@ return {
   -- depends on the git extra for highlighting and auto-completion of github issues/prs
   { import = "lazyvim.plugins.extras.lang.git" },
   {
-    "nicolasgb/jj.nvim",
-    version = "*",
-    config = function()
-      require("jj").setup({})
-    end,
+    "esmuellert/codediff.nvim",
+    cmd = "CodeDiff",
+  },
+  {
+    "mistweaverco/jujutsu.nvim",
+    lazy = true,
     keys = {
-      { "<leader>jd", "<cmd>J describe<CR>", desc = "jj desc" },
+      {
+        "<leader>jj",
+        function()
+          require("jujutsu").open()
+        end,
+        desc = "open jujutsu",
+      },
     },
+    opts = {},
   },
   {
     "folke/snacks.nvim",
