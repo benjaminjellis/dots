@@ -7,6 +7,7 @@ end
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path /Users/ben/go/bin
+fnm env --use-on-cd --shell fish | source
 
 # ---- ENV VARS (NON-SECRET) ----
 # Safe to keep public
