@@ -19,6 +19,7 @@
     "tray",
     "idle_inhibitor",
     "network",
+    "custom/protonvpn",
     "pulseaudio",
     "backlight",
     "battery",
@@ -88,6 +89,13 @@
     "format-linked": ", ({signalStrength}%)",
     "format-disconnected": "Disconnected ⚠ {ifname}",
     "format-alt": " {ifname}: {ipaddr}/{cidr}"
+  },
+  "custom/protonvpn": {
+    "exec": "python3 ~/.config/waybar/scripts/protonvpn-status.py",
+    "return-type": "json",
+    "interval": 5,
+    "format": "{text}",
+    "tooltip": true
   },
   "clock": {
     "interval": 60,

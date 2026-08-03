@@ -3,6 +3,5 @@ fish/conf.d
 fish/themes
 fish/config.local.fish
 fish/fish_plugins
-fish/fish_variables.*
-fish/fish_variables.rPAxpr
-fish/fish_variables
+# Fish universal variables and temporary snapshots are machine-local state.
+fish/fish_variables*

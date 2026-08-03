@@ -119,6 +119,7 @@ tooltip {
 #tray,
 #idle_inhibitor,
 #network,
+#custom-protonvpn,
 #pulseaudio,
 #backlight,
 #battery,
@@ -139,6 +140,19 @@ tooltip {
 #tray {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+#custom-protonvpn.connected {
+  color: #175c2c;
+}
+
+#custom-protonvpn.disconnected {
+  color: @sys7_alert;
+}
+
+#custom-protonvpn.unknown {
+  color: @sys7_white;
+  background: @sys7_black;
 }
 
 #tray > .passive {
