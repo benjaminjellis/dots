@@ -28,6 +28,3 @@ font-size = 19
 font-thicken = true
 font-feature = "calt, liga, dlig, ss01, ss02, ss03, ss04, ss05, ss06, ss07, ss08"
 keybind = performable:ctrl+c=copy_to_clipboard
-
-keybind = ctrl+h=goto_split:left
-keybind = ctrl+l=goto_split:right
