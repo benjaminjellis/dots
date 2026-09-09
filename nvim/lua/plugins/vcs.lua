@@ -27,6 +27,15 @@ return {
     end,
   },
   {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+    keys = {
+      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview (working tree)" },
+      { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diffview close" },
+    },
+    opts = {},
+  },
+  {
     "mistweaverco/jujutsu.nvim",
     lazy = true,
     keys = {
