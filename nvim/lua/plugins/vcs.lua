@@ -108,6 +108,7 @@ return {
       { "<leader>gI", false },
       { "<leader>gp", false },
       { "<leader>gP", false },
+      { "<leader>gd", false }, -- diffview.nvim owns this (see below)
     },
   },
   -- Octo
