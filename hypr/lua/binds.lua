@@ -7,7 +7,7 @@ return function(apps)
 
 	bind_exec(main_mod .. " + T", apps.terminal)
 	bind_exec(main_mod .. " + O", apps.bluetooth_manager)
-	hl.bind(main_mod .. " + Q", hl.dsp.window.close())
+	hl.bind(main_mod .. " + SHIFT + W", hl.dsp.window.close())
 	bind_exec(main_mod .. " + B", apps.personal_browser)
 	bind_exec(main_mod .. " + W", apps.work_browser)
 	bind_exec(main_mod .. " + F", apps.file_manager)
