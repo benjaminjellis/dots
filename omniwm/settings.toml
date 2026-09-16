@@ -185,12 +185,12 @@ hotkeys = [
     { binding = "Option+Shift+R", id = "raiseAllFloatingWindows" },
     { binding = "Unassigned", id = "rescueOffscreenWindows" },
     { binding = "Unassigned", id = "toggleFocusedWindowFloating" },
-    { binding = "Unassigned", id = "closeFocusedWindow" },
+    { binding = "Shift+Command+W", id = "closeFocusedWindow" },
     { binding = "Control+Option+M", id = "openMenuAnywhere" },
     { binding = "Unassigned", id = "toggleWorkspaceBarVisibility" },
     { binding = "Unassigned", id = "toggleHiddenBarPanel" },
     { binding = "Option+Grave", id = "toggleQuakeTerminal" },
-    { binding = "Option+Shift+L", id = "toggleWorkspaceLayout" },
+    { binding = "Unassigned", id = "toggleWorkspaceLayout" },
     { binding = "Option+Shift+O", id = "toggleOverview" },
     { binding = "Unassigned", id = "toggleSystemStats" },
 ]
@@ -254,9 +254,9 @@ updateChecksEnabled = true
 [gestures]
 fingerCount = 3
 invertDirection = true
-mouseMoveModifierKey = "option"
-mouseResizeModifierKey = "option"
-scrollEnabled = true
+mouseMoveModifierKey = "command"
+mouseResizeModifierKey = "command"
+scrollEnabled = false
 scrollModifierKey = "optionShift"
 scrollSensitivity = 5.0
 trackpadScrollStyle = "snap"
