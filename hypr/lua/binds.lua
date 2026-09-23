@@ -21,6 +21,7 @@ return function(apps)
 	bind_exec("CONTROL + Space", apps.ime_toggle)
 	bind_exec(main_mod .. "+ CONTROL + Space", apps.ime_toggle)
 	bind_exec(main_mod .. " + Print", apps.screenshot_region)
+	bind_exec(main_mod .. "+ P", apps.neg_py)
 	bind_exec(main_mod .. " + SHIFT + Print", apps.screenshot_output)
 
 	hl.bind(main_mod .. " + Tab", hl.dsp.window.cycle_next())

@@ -5,7 +5,7 @@ return {
 	personal_browser = 'zen-browser -P "Personal"',
 	work_browser = 'zen-browser -P "Work"',
 	launcher = "hyprlauncher",
-	file_manager = "thunar",
+	file_manager = "io.elementary.files",
 	bluetooth_manager = "blueman-manager",
 	lock = "hyprlock",
 	music = "spotify",
@@ -14,6 +14,7 @@ return {
 	vpn_connect = "protonvpn connect --country JP",
 	vpn_disconnect = "protonvpn disconnect",
 	screenshot_region = "hyprshot -m region",
+	neg_py = "QT_SCALE_FACTOR=1.5  ~/Applications/NegPy-0.60.0-x86_64.AppImage",
 	screenshot_output = "hyprshot -m output",
 	ime_toggle = "sh -c 'fcitx5-remote -t || { fcitx5 -d; sleep 0.2; fcitx5-remote -t; }'",
 	autostart = {
