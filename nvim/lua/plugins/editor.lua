@@ -10,40 +10,12 @@ return {
   -- disable neo-tree in favour of the snacks picker
   {
     "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-  },
-  -- shift snacks explorer to appear on right hand side
-  {
-    "folke/snacks.nvim",
+    enabled = true,
     opts = {
-      explorer = {
-        replace_netrw = true,
+      window = {
+        position = "right",
+        width = 40,
       },
-      picker = {
-        sources = {
-          explorer = {
-            layout = { layout = { position = "right" }, hidden = { "preview", "input" } },
-          },
-        },
-      },
-    },
-    keys = {
-      {
-        "<leader>fe",
-        function()
-          Snacks.explorer({ cwd = LazyVim.root() })
-        end,
-        desc = "Explorer Snacks (root dir)",
-      },
-      {
-        "<leader>fE",
-        function()
-          Snacks.explorer()
-        end,
-        desc = "Explorer Snacks (cwd)",
-      },
-      { "<leader>e", "<leader>fE", desc = "Explorer Snacks (cwd)", remap = true },
-      { "<leader>E", "<leader>fe", desc = "Explorer Snacks (root dir)", remap = true },
     },
   },
   -- turn off unused snippet plugins

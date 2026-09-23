@@ -2,6 +2,10 @@ return function()
 	hl.env("GDK_SCALE", "1.5")
 	hl.env("XCURSOR_SIZE", "24")
 	hl.env("HYPRCURSOR_SIZE", "24")
+	hl.env("GTK_IM_MODULE", "fcitx")
+	hl.env("QT_IM_MODULE", "fcitx")
+	hl.env("XMODIFIERS", "@im=fcitx")
+	hl.env("SDL_IM_MODULE", "fcitx")
 
 	hl.config({
 		xwayland = {
@@ -24,8 +28,8 @@ return function()
 		},
 		decoration = {
 			rounding = 10,
-			active_opacity = 0.9,
-			inactive_opacity = 0.9,
+			active_opacity = 0.97,
+			inactive_opacity = 0.97,
 			shadow = {
 				enabled = true,
 				range = 5,
