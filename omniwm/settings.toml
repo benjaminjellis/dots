@@ -969,7 +969,7 @@ binding = "Unassigned"
 id = "toggleFocusedWindowFloating"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Shift+Command+W"
 id = "closeFocusedWindow"
 
 [[hotkeys]]
