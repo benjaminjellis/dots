@@ -101,6 +101,10 @@
     "interval": 60,
     "format": "{:%a %b %d  %I:%M %p}"
   },
+  "pulseaudio": {
+    "reverse-scrolling": true,
+    "reverse-mouse-scrolling": true
+  },
   "cpu": {
     "format": "{usage}%   ",
     "tooltip": false
