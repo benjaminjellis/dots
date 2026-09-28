@@ -1,317 +1,226 @@
+/* System 7: match Waybar's palette and Macintosh typography. */
+@define-color sys7_high #f8f9f9;
+@define-color sys7_low #dee2e2;
+@define-color sys7_panel #e8ecec;
+@define-color sys7_shadow #7b8484;
+@define-color sys7_black #000000;
+@define-color sys7_white #ffffff;
+@define-color sys7_alert #790000;
+
 * {
-  all: unset;
-  font-family: FiraCode Nerd Font;
-  transition: 0.3s;
-  font-size: 1.2rem;
+  font-family: "ChiKareGo2", sans-serif;
+  font-size: 16px;
+  border-radius: 0;
+  text-shadow: none;
+  transition: none;
 }
 
-.floating-notifications.background .notification-row {
-  padding: 1rem;
+notificationwindow,
+blankwindow,
+.blank-window,
+.floating-notifications,
+.notification-row,
+.control-center-list {
+  background: transparent;
 }
 
-.floating-notifications.background .notification-row .notification-background {
-  background-color: #c0c0c0;
-  color: #000000;
-  border-left: 1px solid #ffffff;
-  border-top: 1px solid #ffffff;
-  border-bottom: 1px solid #404040;
-  box-shadow: 1px 1px 1px 0px #000000;
+.notification-row .notification-background {
+  padding: 8px 12px;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .notification {
-  padding: 0.5rem;
-  /* border-radius: 0.5rem; */
+.notification-row .notification-background .notification,
+.control-center {
+  color: @sys7_black;
+  background: @sys7_panel;
+  border: 1px solid @sys7_black;
+  border-radius: 0;
+  box-shadow: inset 1px 1px @sys7_white,
+              inset -1px -1px @sys7_shadow,
+              3px 3px @sys7_black;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .notification.critical {
-  border: 1px solid #eb6f92;
+/* A narrow striped crown gives each popup a classic window frame. */
+.notification-row .notification-background .notification {
+  padding: 12px 0 0;
+  background-image: repeating-linear-gradient(
+    180deg, @sys7_high 0px, @sys7_high 1px,
+    @sys7_shadow 1px, @sys7_shadow 2px
+  );
+  background-size: 100% 10px;
+  background-repeat: no-repeat;
+  background-position: left top;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .notification
-  .notification-content
-  .summary {
-  margin: 0.5rem;
-  color: #000000;
+.notification-row .notification-background .notification.critical {
+  border: 2px solid @sys7_alert;
+}
+
+.notification .notification-default-action {
+  color: @sys7_black;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 12px;
+}
+
+.notification .notification-default-action:hover {
+  background: @sys7_high;
+}
+
+.notification .notification-default-action:focus-visible {
+  outline: 1px solid @sys7_black;
+  outline-offset: -4px;
+}
+
+.notification-content {
+  background: transparent;
+}
+
+.notification-content .summary {
+  color: @sys7_black;
   font-weight: bold;
+  margin-bottom: 6px;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .notification
-  .notification-content
-  .body {
-  margin: 0.5rem;
-  color: #000000;
+.notification-content .body {
+  color: @sys7_black;
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .notification
-  > *:last-child
-  > * {
-  min-height: 3rem;
+.notification-content .time {
+  color: #454d4d;
+  font-size: 12px;
+  margin-right: 28px;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .notification
-  > *:last-child
-  > *
-  .notification-action {
-  border-radius: 0.5rem;
-  color: #e0def4;
-  background-color: #1f1d2e;
-  border: 1px solid #6e6a86;
+.notification-content .image {
+  margin: 4px 12px 4px 0;
+  border-radius: 0;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .notification
-  > *:last-child
-  > *
-  .notification-action:hover {
-  background-color: #26233a;
+.notification-content .body-image {
+  margin-top: 8px;
+  border-radius: 0;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .notification
-  > *:last-child
-  > *
-  .notification-action:active {
-  background-color: #6e6a86;
+.notification .notification-alt-actions {
+  padding: 4px 8px 8px;
+  border-top: 1px solid @sys7_shadow;
+  background: @sys7_low;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .close-button {
-  margin: 0.5rem;
-  padding: 0.25rem;
-  border-radius: 0.5rem;
-  color: #e0def4;
-  background-color: #eb6f92;
+.notification-action {
+  margin: 4px;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .close-button:hover {
-  color: #191724;
+.notification-action > button,
+.close-button,
+.widget-title > button,
+.notification-group-buttons button {
+  color: @sys7_black;
+  background: @sys7_high;
+  border: 1px solid @sys7_black;
+  border-radius: 0;
+  box-shadow: inset 1px 1px @sys7_white,
+              inset -1px -1px @sys7_shadow,
+              1px 1px @sys7_black;
+  padding: 4px 12px;
 }
 
-.floating-notifications.background
-  .notification-row
-  .notification-background
-  .close-button:active {
-  background-color: #ebbcba;
+.notification-action > button:hover,
+.close-button:hover,
+.widget-title > button:hover,
+.notification-group-buttons button:hover {
+  background: @sys7_white;
+}
+
+.notification-action > button:active,
+.close-button:active,
+.widget-title > button:active,
+.notification-group-buttons button:active {
+  color: @sys7_white;
+  background: @sys7_black;
+  box-shadow: none;
+}
+
+.close-button {
+  margin: 18px 18px 0 0;
+  min-width: 18px;
+  min-height: 18px;
+  padding: 0;
 }
 
 .control-center {
-  margin: 1rem;
-  background-color: #c0c0c0;
-  color: #000000;
-  padding: 1rem;
-  border-left: 1px solid #ffffff;
-  border-top: 1px solid #ffffff;
-  border-bottom: 1px solid #404040;
-  box-shadow: 1px 1px 1px 0px #000000;
+  margin: 12px;
+  padding: 8px;
 }
 
-.control-center .widget-title {
-  color: #000000;
+.widget-title {
+  margin: 0 0 8px;
+  padding: 6px;
+  background-image: repeating-linear-gradient(
+    180deg, @sys7_high 0px, @sys7_high 1px,
+    @sys7_shadow 1px, @sys7_shadow 2px
+  );
+  border-bottom: 1px solid @sys7_black;
+}
+
+.widget-title > label {
+  color: @sys7_black;
+  background: @sys7_panel;
+  padding: 2px 8px;
+  font-size: 16px;
   font-weight: bold;
-}
-
-.control-center .widget-title button {
-  color: #000000;
-  background-color: #c0c0c0;
-  border-left: 1px solid #ffffff;
-  border-top: 1px solid #ffffff;
-  border-bottom: 1px solid #404040;
-  box-shadow: 1px 1px 1px 0px #000000;
-  padding: 0.5rem;
-}
-
-.control-center .widget-title button:hover {
-  background-color: #404040;
-}
-
-.control-center .widget-title button:active {
-  background-color: #6e6a86;
-}
-
-.control-center .notification-row .notification-background {
-  margin: 0.5rem 0;
-  color: #000000;
-  background-color: #c0c0c0;
-  border-left: 1px solid #ffffff;
-  border-top: 1px solid #ffffff;
-  border-bottom: 1px solid #404040;
-  box-shadow: 1px 1px 1px 0px #000000;
-}
-
-.control-center .notification-row .notification-background .notification {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-}
-
-.control-center
-  .notification-row
-  .notification-background
-  .notification.critical {
-  border: 1px solid #eb6f92;
-}
-
-.control-center
-  .notification-row
-  .notification-background
-  .notification
-  .notification-content {
-  color: #000000;
-}
-
-.control-center
-  .notification-row
-  .notification-background
-  .notification
-  .notification-content
-  .summary {
-  margin: 0.5rem;
-  color: #000000;
-  font-weight: bold;
-}
-
-.control-center
-  .notification-row
-  .notification-background
-  .notification
-  .notification-content
-  .body {
-  margin: 0.5rem;
-  color: #000000;
-}
-
-.control-center
-  .notification-row
-  .notification-background
-  .notification
-  > *:last-child
-  > * {
-  min-height: 3rem;
-}
-
-.control-center
-  .notification-row
-  .notification-background
-  .notification
-  > *:last-child
-  > *
-  .notification-action {
-  border-radius: 0.5rem;
-  color: #000000;
-  background-color: #1f1d2e;
-  border: 1px solid #6e6a86;
-}
-
-.control-center
-  .notification-row
-  .notification-background
-  .notification
-  > *:last-child
-  > *
-  .notification-action:hover {
-  background-color: #26233a;
-}
-
-.control-center
-  .notification-row
-  .notification-background
-  .notification
-  > *:last-child
-  > *
-  .notification-action:active {
-  background-color: #6e6a86;
-}
-
-.control-center .notification-row .notification-background .close-button {
-  margin: 0.5rem;
-  padding: 0.25rem;
-  border-radius: 0.5rem;
-  color: #000000;
-  background-color: #eb6f92;
-}
-
-.control-center .notification-row .notification-background .close-button:hover {
-  color: #191724;
-}
-
-.control-center
-  .notification-row
-  .notification-background
-  .close-button:active {
-  background-color: #ebbcba;
-}
-
-progressbar,
-progress,
-trough {
-  border-radius: 0.5rem;
-}
-
-.notification.critical progress {
-  background-color: #f38ba8;
-}
-
-.notification.low progress,
-.notification.normal progress {
-  background-color: #89b4fa;
-}
-
-trough {
-  background-color: #313244;
-}
-
-.control-center trough {
-  background-color: #45475a;
-}
-
-.control-center-dnd {
-  margin: 1rem 0;
-}
-
-.control-center-dnd slider {
-  background: #26233a;
 }
 
 .widget-dnd {
-  color: #000000;
+  color: @sys7_black;
+  margin: 8px;
 }
 
-.widget-dnd > switch {
-  background: #ffffff;
-  border: 1px solid #6e6a86;
+.widget-dnd label,
+.notification-group-headers,
+.notification-group-header {
+  color: @sys7_black;
 }
 
-.widget-dnd > switch:checked slider {
-  background: #31748f;
+.widget-dnd switch {
+  background: @sys7_low;
+  border: 1px solid @sys7_black;
+  border-radius: 0;
+  box-shadow: inset 1px 1px @sys7_shadow;
 }
 
-.widget-dnd > switch slider {
-  background: #6e6a86;
-  margin: 0.25rem;
-}/
+.widget-dnd switch:checked {
+  background: @sys7_black;
+}
+
+.widget-dnd switch slider {
+  background: @sys7_high;
+  border: 1px solid @sys7_black;
+  border-radius: 0;
+  box-shadow: inset 1px 1px @sys7_white, inset -1px -1px @sys7_shadow;
+  min-width: 20px;
+  min-height: 18px;
+  margin: 2px;
+}
+
+progressbar trough {
+  background: @sys7_white;
+  border: 1px solid @sys7_black;
+  border-radius: 0;
+  min-height: 8px;
+}
+
+progressbar progress {
+  background: @sys7_black;
+  border-radius: 0;
+  min-height: 8px;
+}
+
+.notification.critical progress {
+  background: @sys7_alert;
+}
