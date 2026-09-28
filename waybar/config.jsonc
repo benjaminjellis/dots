@@ -22,7 +22,6 @@
     "custom/protonvpn",
     "pulseaudio",
     "backlight",
-    "battery",
     "clock"
   ],
   "idle_inhibitor": {
