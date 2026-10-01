@@ -38,44 +38,6 @@ return {
   {
     "mistweaverco/jujutsu.nvim",
     lazy = true,
-    keys = {
-      {
-        "<leader>jj",
-        function()
-          require("jujutsu").open()
-        end,
-        desc = "open jujutsu",
-      },
-      {
-        "<leader>jd",
-        function()
-          local root = require("jujutsu.jj.cli").find_workspace_root()
-          if not root then
-            require("jujutsu.notify").error("not a jj workspace")
-            return
-          end
-          require("jujutsu.buffers.editor").open({
-            root = root,
-            on_submit = function()
-              require("jujutsu").refresh()
-            end,
-          })
-        end,
-        desc = "jujutsu describe",
-      },
-      {
-        "<leader>jl",
-        function()
-          local root = require("jujutsu.jj.cli").find_workspace_root()
-          if not root then
-            require("jujutsu.notify").error("not a jj workspace")
-            return
-          end
-          require("jujutsu.buffers.log_view").open(root)
-        end,
-        desc = "jujutsu log",
-      },
-    },
     opts = {
       diff_preset = "difftastic", -- default
       -- The recursive .jj filewatcher retriggers on jj's own working-copy/op-log
@@ -99,6 +61,29 @@ return {
         vim.api.nvim_set_hl(0, "JujutsuLualineBookmark", { fg = "#062625", bold = true })
       end
       hl.setup()
+    end,
+  },
+  {
+    "swaits/lazyjj.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "benjaminjellis/lazyjj",
+        branch = "add_fuzzy_search_to_bookmarks",
+        build = "cargo build --release --locked",
+        config = false,
+      },
+    },
+    cmd = "LazyJJ",
+    keys = {
+      { "<leader>jj", "<cmd>LazyJJ<cr>", desc = "LazyJJ" },
+    },
+    opts = { mapping = "<leader>jj" },
+    config = function(_, opts)
+      -- The wrapper runs `lazyjj` from PATH; prefer the fork within Neovim.
+      local fork = require("lazy.core.config").plugins["lazyjj"]
+      vim.env.PATH = fork.dir .. "/target/release:" .. vim.env.PATH
+      require("lazyjj").setup(opts)
     end,
   },
   {
