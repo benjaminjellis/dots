@@ -49,7 +49,7 @@ size = 16.0
 bottom = 20.0
 left = 16.0
 right = 16.0
-top = 16.0
+top = 12.8
 
 [general]
 animationsEnabled = false
