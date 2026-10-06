@@ -7,7 +7,7 @@ return {
 	launcher = "hyprlauncher",
 	file_manager = "io.elementary.files",
 	bluetooth_manager = "blueman-manager",
-	lock = "hyprlock",
+	lock = "pidof swaylock || swaylock -f",
 	music = "spotify",
 	sunset_warmer = "hyprctl hyprsunset temperature -500",
 	sunset_cooler = "hyprctl hyprsunset temperature +500",

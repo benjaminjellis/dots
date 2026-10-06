@@ -1,0 +1,24 @@
+# System 7 colours, matching the Hyprland wallpaper.
+image=/home/ben/.config/hypr/system7-turquoise-wallpaper.png
+scaling=fill
+color=008080
+ignore-empty-password
+indicator-idle-visible
+indicator-radius=65
+indicator-thickness=12
+inside-color=404040
+inside-clear-color=404040
+inside-ver-color=404040
+inside-wrong-color=404040
+ring-color=c0c0c0
+ring-clear-color=c0c0c0
+ring-ver-color=008080
+ring-wrong-color=cc4444
+key-hl-color=00ffff
+bs-hl-color=ffcc00
+line-uses-inside
+separator-color=00000000
+text-color=ffffff
+text-clear-color=ffffff
+text-ver-color=ffffff
+text-wrong-color=ffffff

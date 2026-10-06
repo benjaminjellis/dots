@@ -92,6 +92,31 @@ return {
 
       vim.o.laststatus = vim.g.lualine_laststatus
 
+      -- jj's synchronous fetch uses vim.wait(), which runs lualine's refresh
+      -- timer before its cache is populated. Guard all components together so
+      -- nested redraws cannot start another fetch and starve keyboard input.
+      local jj_components = require("jujutsu.lualine").components()
+      local fetching_jj = false
+      local function guarded(fn, fallback)
+        return function(...)
+          if fetching_jj then
+            return fallback
+          end
+          fetching_jj = true
+          local ok, result = pcall(fn, ...)
+          fetching_jj = false
+          if not ok then
+            error(result)
+          end
+          return result
+        end
+      end
+      for _, component in ipairs(jj_components) do
+        component[1] = guarded(component[1], "")
+        component.cond = guarded(component.cond, false)
+      end
+      table.insert(jj_components, "branch")
+
       local opts = {
         options = {
           theme = "auto",
@@ -102,7 +127,7 @@ return {
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = require("jujutsu.lualine").prepend({ "branch" }),
+          lualine_b = jj_components,
 
           lualine_c = {
             LazyVim.lualine.root_dir(),
