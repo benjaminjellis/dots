@@ -30,7 +30,13 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     keys = {
-      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview (working tree)" },
+      {
+        "<leader>gd",
+        function()
+          require("config.diff").open()
+        end,
+        desc = "Diff (working copy)",
+      },
       { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diffview close" },
     },
     opts = {},
@@ -93,7 +99,7 @@ return {
       { "<leader>gI", false },
       { "<leader>gp", false },
       { "<leader>gP", false },
-      { "<leader>gd", false }, -- diffview.nvim owns this (see below)
+      { "<leader>gd", false }, -- VCS diff mapping above owns this
     },
   },
   -- Octo
