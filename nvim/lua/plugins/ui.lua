@@ -102,7 +102,9 @@ return {
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = require("jujutsu.lualine").prepend({ "branch" }),
+          lualine_b = vim.list_extend({
+            { require("config.jj_workspace").status },
+          }, require("jujutsu.lualine").prepend({ "branch" })),
 
           lualine_c = {
             LazyVim.lualine.root_dir(),
