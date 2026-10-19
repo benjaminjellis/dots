@@ -9,6 +9,33 @@
               {
                 "type": "basic",
                 "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "k",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_if",
+                    "bundle_identifiers": [
+                      "^com\\.linear$"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
                   "key_code": "t",
                   "modifiers": {
                     "mandatory": [
@@ -82,6 +109,33 @@
                 ],
                 "conditions": [
                   {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                      "^com\\.mitchellh\\.ghostty$"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "f",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
                       "^app\\.zen-browser\\.zen$"
@@ -104,15 +158,6 @@
                     "key_code": "v",
                     "modifiers": [
                       "left_command"
-                    ]
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": [
-                      "^app\\.zen-browser\\.zen$",
-                      "^com\\.mitchellh\\.ghostty$"
                     ]
                   }
                 ]
@@ -162,12 +207,23 @@
                       "left_command"
                     ]
                   }
-                ],
-                "conditions": [
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "z",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ]
+                  }
+                },
+                "to": [
                   {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": [
-                      "^com\\.tinyspeck\\.slackmacgap$"
+                    "key_code": "z",
+                    "modifiers": [
+                      "left_command"
                     ]
                   }
                 ]
@@ -241,6 +297,22 @@
                   {
                     "key_code": "vk_none"
                   }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "vk_none"
+                  }
                 ],
                 "conditions": [
                   {
@@ -264,15 +336,6 @@
                 "to": [
                   {
                     "key_code": "vk_none"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": [
-                      "^app\\.zen-browser\\.zen$",
-                      "^com\\.mitchellh\\.ghostty$"
-                    ]
                   }
                 ]
               },
@@ -315,13 +378,21 @@
                   {
                     "key_code": "vk_none"
                   }
-                ],
-                "conditions": [
-                  {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": [
-                      "^com\\.tinyspeck\\.slackmacgap$"
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "z",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
                     ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "vk_none"
                   }
                 ]
               }
