@@ -1,0 +1,20 @@
+# Keep Stow's default exclusions: a local ignore file replaces them.
+RCS
+.+,v
+CVS
+\.\#.+
+\.cvsignore
+\.svn
+_darcs
+\.hg
+\.git
+\.gitignore
+\.gitmodules
+.+~
+\#.*\#
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# Repository metadata must never be linked into ~/.config.
+\.jj

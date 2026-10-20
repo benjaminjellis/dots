@@ -1,7 +1,7 @@
 hyprland
 hyprpaper
 hypridle
-hyprlock
+swaylock
 hyprshot
 hyprsunset
 waybar
