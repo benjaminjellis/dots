@@ -55,6 +55,7 @@
                   {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$",
                       "^app\\.zen-browser\\.zen$",
                       "^com\\.mitchellh\\.ghostty$"
                     ]
@@ -83,6 +84,7 @@
                   {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$",
                       "^app\\.zen-browser\\.zen$",
                       "^com\\.mitchellh\\.ghostty$"
                     ]
@@ -138,6 +140,7 @@
                   {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$",
                       "^app\\.zen-browser\\.zen$"
                     ]
                   }
@@ -184,6 +187,7 @@
                   {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$",
                       "^app\\.zen-browser\\.zen$",
                       "^com\\.mitchellh\\.ghostty$"
                     ]
@@ -301,6 +305,7 @@
                   {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$",
                       "^app\\.zen-browser\\.zen$",
                       "^com\\.mitchellh\\.ghostty$"
                     ]
@@ -326,6 +331,7 @@
                   {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$",
                       "^app\\.zen-browser\\.zen$",
                       "^com\\.mitchellh\\.ghostty$"
                     ]
@@ -367,6 +373,7 @@
                   {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$",
                       "^app\\.zen-browser\\.zen$"
                     ]
                   }
@@ -407,6 +414,7 @@
                   {
                     "type": "frontmost_application_if",
                     "bundle_identifiers": [
+                      "^com\\.google\\.Chrome$",
                       "^app\\.zen-browser\\.zen$",
                       "^com\\.mitchellh\\.ghostty$"
                     ]
