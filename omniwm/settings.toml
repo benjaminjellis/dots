@@ -15,8 +15,8 @@ width = 5.0
 
 [borders.color]
 alpha = 1.0
-blue = 0.208
-green = 0.42
+blue = 0.6
+green = 0.753
 red = 1.0
 
 [clipboard]
@@ -51,7 +51,7 @@ size = 16.0
 bottom = 20.0
 left = 16.0
 right = 16.0
-top = 56.0
+top = 45.0
 
 [general]
 animationSpeed = 1.0
@@ -173,7 +173,7 @@ enabled = true
 excludedBundleIDs = []
 height = 24.0
 hideEmptyWorkspaces = true
-hideInNativeFullscreen = false
+hideInNativeFullscreen = true
 hoverPreviewsEnabled = true
 notchActiveZoneWidth = 180.0
 notchMode = "splitActiveLeft"
