@@ -51,7 +51,7 @@ size = 16.0
 bottom = 20.0
 left = 16.0
 right = 16.0
-top = 12.8
+top = 56.0
 
 [general]
 animationSpeed = 1.0
@@ -999,7 +999,7 @@ binding = "Unassigned"
 id = "toggleFocusedWindowFloating"
 
 [[hotkeys]]
-binding = "Shift+Command+W"
+binding = "Control+Shift+W"
 id = "closeFocusedWindow"
 
 [[hotkeys]]
