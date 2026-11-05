@@ -113,6 +113,36 @@
             ]
           },
           {
+            "description": "OmniWM focus up: route physical Command+K through Hyper+K to preserve remapped app shortcuts",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "k",
+                    "modifiers": [
+                      "left_control",
+                      "left_option",
+                      "left_shift",
+                      "left_command"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "Hyprland screenshots: Command+Print for a region, Command+Shift+Print to select a display",
             "manipulators": [
               {

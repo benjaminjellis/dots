@@ -5,3 +5,7 @@ fish/config.local.fish
 fish/fish_plugins
 # Fish universal variables and temporary snapshots are machine-local state.
 fish/fish_variables*
+# OmniWM maintains the default shell and editor support files.
+omniwm/shell/default/
+omniwm/shell/.luaurc
+omniwm/shell/omniwm.d.luau
