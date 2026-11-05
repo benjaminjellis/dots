@@ -519,7 +519,7 @@ binding = "Command+J"
 id = "focus.down"
 
 [[hotkeys]]
-binding = "Unassigned"
+binding = "Command+K"
 id = "focus.up"
 
 [[hotkeys]]

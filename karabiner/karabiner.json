@@ -4,6 +4,184 @@
       "complex_modifications": {
         "rules": [
           {
+            "description": "Hyprland app shortcuts: Command is Super",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/usr/bin/osascript -e 'if application \"Ghostty\" is running then' -e 'tell application \"Ghostty\" to new window' -e 'end if' -e 'tell application \"Ghostty\" to activate'",
+                    "repeat": false
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "b",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/usr/bin/nohup /Applications/Zen.app/Contents/MacOS/zen --new-window about:newtab >/dev/null 2>&1 &",
+                    "repeat": false
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "f",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/usr/bin/osascript -e 'tell application \"Finder\"' -e 'make new Finder window' -e 'activate' -e 'end tell'",
+                    "repeat": false
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "software_function": {
+                      "open_application": {
+                        "bundle_identifier": "com.spotify.client"
+                      }
+                    },
+                    "repeat": false
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "o",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/usr/bin/open \"x-apple.systempreferences:com.apple.BluetoothSettings\"",
+                    "repeat": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Hyprland screenshots: Command+Print for a region, Command+Shift+Print to select a display",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "print_screen",
+                  "modifiers": {
+                    "mandatory": [
+                      "command"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/usr/sbin/screencapture -i -s -p",
+                    "repeat": false
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "print_screen",
+                  "modifiers": {
+                    "mandatory": [
+                      "command",
+                      "shift"
+                    ],
+                    "optional": [
+                      "caps_lock"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/usr/sbin/screencapture -i -w -S -p",
+                    "repeat": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Close the current window with Control+Shift+W",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "w",
+                  "modifiers": {
+                    "mandatory": [
+                      "control",
+                      "shift"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "shell_command": "/usr/bin/osascript -e 'tell application \"System Events\" to tell (first application process whose frontmost is true)' -e 'set focusedWindow to value of attribute \"AXFocusedWindow\"' -e 'perform action \"AXPress\" of (value of attribute \"AXCloseButton\" of focusedWindow)' -e 'end tell'",
+                    "repeat": false
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "Linux mappings",
             "manipulators": [
               {
@@ -138,10 +316,9 @@
                 ],
                 "conditions": [
                   {
-                    "type": "frontmost_application_if",
+                    "type": "frontmost_application_unless",
                     "bundle_identifiers": [
-                      "^com\\.google\\.Chrome$",
-                      "^app\\.zen-browser\\.zen$"
+                      "^com\\.mitchellh\\.ghostty$"
                     ]
                   }
                 ]
@@ -397,38 +574,102 @@
                     ]
                   }
                 ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "b",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "shift"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "b",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                      "^com\\.mitchellh\\.ghostty$"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "o",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "shift"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "o",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                      "^com\\.mitchellh\\.ghostty$"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "s",
+                  "modifiers": {
+                    "mandatory": [
+                      "control"
+                    ],
+                    "optional": [
+                      "shift"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "s",
+                    "modifiers": [
+                      "left_command"
+                    ]
+                  }
+                ],
+                "conditions": [
+                  {
+                    "type": "frontmost_application_unless",
+                    "bundle_identifiers": [
+                      "^com\\.mitchellh\\.ghostty$"
+                    ]
+                  }
+                ]
               }
             ]
           },
           {
             "description": "Disable Command equivalents of Linux mappings",
             "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "t",
-                  "modifiers": {
-                    "mandatory": [
-                      "command"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "vk_none"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": [
-                      "^com\\.google\\.Chrome$",
-                      "^app\\.zen-browser\\.zen$",
-                      "^com\\.mitchellh\\.ghostty$"
-                    ]
-                  }
-                ]
-              },
               {
                 "type": "basic",
                 "from": {
@@ -468,31 +709,6 @@
                 "to": [
                   {
                     "key_code": "vk_none"
-                  }
-                ]
-              },
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "f",
-                  "modifiers": {
-                    "mandatory": [
-                      "command"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "vk_none"
-                  }
-                ],
-                "conditions": [
-                  {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": [
-                      "^com\\.google\\.Chrome$",
-                      "^app\\.zen-browser\\.zen$"
-                    ]
                   }
                 ]
               },
