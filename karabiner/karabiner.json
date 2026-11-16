@@ -265,7 +265,8 @@
                     "bundle_identifiers": [
                       "^com\\.google\\.Chrome$",
                       "^app\\.zen-browser\\.zen$",
-                      "^com\\.mitchellh\\.ghostty$"
+                      "^com\\.mitchellh\\.ghostty$",
+                      "^com\\.apple\\.finder$"
                     ]
                   }
                 ]
@@ -396,7 +397,8 @@
                     "bundle_identifiers": [
                       "^com\\.google\\.Chrome$",
                       "^app\\.zen-browser\\.zen$",
-                      "^com\\.mitchellh\\.ghostty$"
+                      "^com\\.mitchellh\\.ghostty$",
+                      "^com\\.apple\\.finder$"
                     ]
                   }
                 ]
