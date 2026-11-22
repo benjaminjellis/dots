@@ -4,7 +4,7 @@ hypridle
 swaylock
 hyprshot
 hyprsunset
-waybar
+quickshell
 btop
 neovim
 swaync

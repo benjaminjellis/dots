@@ -9,6 +9,13 @@ return function(apps)
 	hl.bind(main_mod .. " + Tab", hl.dsp.window.cycle_next())
 	hl.bind(main_mod .. " + SHIFT + Tab", hl.dsp.window.cycle_next({ prev = true }))
 	bind_exec(main_mod .. "+ CONTROL + Q", apps.lock)
+	bind_exec(main_mod .. " + CONTROL + L", apps.lock)
+	bind_exec("XF86PowerOff", apps.lock)
+	if apps.is_neo then
+		local lid_switch = "Apple SMC power/lid events"
+		bind_exec("switch:on:" .. lid_switch, "omarchy-system-lid-close", { locked = true })
+		bind_exec("switch:off:" .. lid_switch, "omarchy-hyprland-monitor-clamshell", { locked = true })
+	end
 	hl.bind(main_mod .. " + H", hl.dsp.focus({ direction = "l" }))
 	hl.bind(main_mod .. " + J", hl.dsp.focus({ direction = "d" }))
 	hl.bind(main_mod .. " + K", hl.dsp.focus({ direction = "u" }))

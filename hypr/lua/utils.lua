@@ -16,4 +16,8 @@ function M.is_host(name)
 	return M.hostname() == name
 end
 
+function M.is_neo()
+	return M.is_host("thopter")
+end
+
 return M
