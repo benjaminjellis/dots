@@ -35,6 +35,12 @@ This repo starts `fcitx5 -d` from Hyprland and sets the Fcitx environment
 variables in `hypr/lua/settings.lua`. After installing, restart Hyprland, run
 `fcitx5-configtool`, add Mozc, then switch input methods with `Ctrl+Space`.
 
+`fcitx5/conf/waylandim.conf` keeps the Wayland virtual keyboard alive across
+input-method activation changes. This is a reversible mitigation for keyboard
+resets, not a confirmed fix for interrupted Mozc composition. Fcitx must be
+restarted after changing it. To undo it, set `PersistentVirtualKeyboard=False`
+and restart Fcitx.
+
 Personal Mozc dictionary entries live in `mozc/user-dictionary.tsv`. Import
 that file from Mozc's dictionary tool:
 
