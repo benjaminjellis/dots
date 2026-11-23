@@ -8,7 +8,6 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/go/bin
 fish_add_path $HOME/.local/share/nvim/mason/bin
-fnm env --use-on-cd --shell fish | source
 
 # ---- ENV VARS (NON-SECRET) ----
 # Safe to keep public
@@ -66,4 +65,6 @@ function fish_greeting
 end
 
 test -r '/home/ben/.opam/opam-init/init.fish' && source '/home/ben/.opam/opam-init/init.fish' >/dev/null 2>/dev/null; or true
-direnv hook fish | source
+if command -q direnv
+    direnv hook fish | source
+end

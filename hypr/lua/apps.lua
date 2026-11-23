@@ -1,4 +1,7 @@
+local is_neo = require("lua.utils").is_neo()
+
 return {
+	is_neo = is_neo,
 	main_mod = "SUPER",
 	terminal = "ghostty",
 	browser = "zen-browser",
@@ -7,7 +10,7 @@ return {
 	launcher = "hyprlauncher",
 	file_manager = "io.elementary.files",
 	bluetooth_manager = "blueman-manager",
-	lock = "pidof swaylock || swaylock -f",
+	lock = is_neo and "omarchy system lock" or "pidof swaylock || swaylock -f",
 	music = "spotify",
 	sunset_warmer = "hyprctl hyprsunset temperature -500",
 	sunset_cooler = "hyprctl hyprsunset temperature +500",
@@ -18,9 +21,11 @@ return {
 	screenshot_output = "hyprshot -m output",
 	ime_toggle = "sh -c 'fcitx5-remote -t || { fcitx5 -d; sleep 0.2; fcitx5-remote -t; }'",
 	autostart = {
-		"waybar",
+		'quickshell -n -p "$HOME/.config/hypr/bar"',
 		"hyprpaper",
-		"hypridle",
+		is_neo and 'mkdir -p "$HOME/.local/state/omarchy/toggles"'
+			.. ' && touch "$HOME/.local/state/omarchy/toggles/bar-off"'
+			.. ' && exec omarchy-launch-shell' or "hypridle",
 		"hyprsunset",
 		"fcitx5 -d",
 		"systemctl --user start hyprpolkitagent",

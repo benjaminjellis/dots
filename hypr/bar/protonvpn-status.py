@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Report the Proton app's NetworkManager tunnel state to Waybar."""
+"""Report the Proton app's NetworkManager tunnel state."""
 
 import json
 import os
