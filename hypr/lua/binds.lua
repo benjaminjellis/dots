@@ -38,8 +38,9 @@ return function(apps)
 	bind_exec("XF86AudioLowerVolume", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-", { locked = true, repeating = true })
 	bind_exec("XF86AudioMute", "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", { locked = true, repeating = true })
 	bind_exec("XF86AudioMicMute", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", { locked = true, repeating = true })
-	bind_exec("XF86MonBrightnessUp", "brightnessctl s 10%+", { locked = true, repeating = true })
-	bind_exec("XF86MonBrightnessDown", "brightnessctl s 10%-", { locked = true, repeating = true })
+	local bar_brightness = 'quickshell ipc -p "$HOME/.config/hypr/bar" call barBrightness step '
+	bind_exec("XF86MonBrightnessUp", apps.is_neo and (bar_brightness .. "10 || brightnessctl s 10%+") or "brightnessctl s 10%+", { locked = true, repeating = true })
+	bind_exec("XF86MonBrightnessDown", apps.is_neo and (bar_brightness .. "-10 || brightnessctl s 10%-") or "brightnessctl s 10%-", { locked = true, repeating = true })
 
 	bind_exec("XF86AudioNext", "playerctl next", { locked = true })
 	bind_exec("XF86AudioPause", "playerctl play-pause", { locked = true })

@@ -21,7 +21,7 @@ return {
 	screenshot_output = "hyprshot -m output",
 	ime_toggle = "sh -c 'fcitx5-remote -t || { fcitx5 -d; sleep 0.2; fcitx5-remote -t; }'",
 	autostart = {
-		'quickshell -n -p "$HOME/.config/hypr/bar"',
+		"env DOTS_BAR_BRIGHTNESS=" .. (is_neo and "1" or "0") .. ' quickshell -n -p "$HOME/.config/hypr/bar"',
 		"hyprpaper",
 		is_neo and 'mkdir -p "$HOME/.local/state/omarchy/toggles"'
 			.. ' && touch "$HOME/.local/state/omarchy/toggles/bar-off"'
@@ -30,5 +30,6 @@ return {
 		"fcitx5 -d",
 		"systemctl --user start hyprpolkitagent",
 		"protonvpn-app",
+		is_neo and "swaync" or nil,
 	},
 }

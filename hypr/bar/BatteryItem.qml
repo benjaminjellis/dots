@@ -11,6 +11,8 @@ BarItem {
     readonly property int percent: Math.round((device?.percentage || 0) * 100)
     readonly property bool charging: device?.state === UPowerDeviceState.Charging
     readonly property bool full: device?.state === UPowerDeviceState.FullyCharged
+    readonly property real remainingSeconds: charging ? (device?.timeToFull || 0) : onBattery ? (device?.timeToEmpty || 0) : 0
+    readonly property real changeRate: device?.changeRate || 0
     readonly property var levelIcons: ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     readonly property var chargeIcons: ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
     readonly property int iconIndex: Math.max(0, Math.min(9, Math.floor((device?.percentage || 0) * 10)))
@@ -34,8 +36,16 @@ BarItem {
             id: panel
             anchors.fill: parent
             minimumWidth: 210
-            implicitHeight: 36
-            text: item.percent + "% · " + (item.full ? "Fully charged" : item.charging ? "Charging" : item.onBattery ? "On battery" : "Plugged in")
+            implicitHeight: 82
+            text: {
+                const power = item.onBattery ? "Charger disconnected" : "Charger connected"
+                const state = item.full ? " · Fully charged" : item.charging ? " · Charging" : ""
+                const minutes = Math.ceil(item.remainingSeconds / 60)
+                const duration = minutes >= 60 ? Math.floor(minutes / 60) + "h " + minutes % 60 + "m" : minutes + "m"
+                const estimate = minutes > 0 ? duration + (item.charging ? " to full" : " remaining") : "Time estimate unavailable"
+                const rate = item.changeRate > 0 ? item.changeRate.toFixed(1) + " W " + (item.charging ? "charging" : "discharging") : "Charge rate unavailable"
+                return item.percent + "%" + state + "\n" + power + "\n" + estimate + "\n" + rate
+            }
             onClicked: details.visible = false
         }
     }
