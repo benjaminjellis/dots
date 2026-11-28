@@ -6,6 +6,7 @@ return function(apps)
 	local main_mod = apps.main_mod
 	-- system binds
 	hl.bind(main_mod .. " + SHIFT + W", hl.dsp.window.close())
+	hl.bind(main_mod .. " + SHIFT + E", hl.dsp.exit())
 	hl.bind(main_mod .. " + Tab", hl.dsp.window.cycle_next())
 	hl.bind(main_mod .. " + SHIFT + Tab", hl.dsp.window.cycle_next({ prev = true }))
 	bind_exec(main_mod .. "+ CONTROL + Q", apps.lock)
@@ -61,7 +62,7 @@ return function(apps)
 	bind_exec(main_mod .. " + SHIFT + V", apps.vpn_disconnect)
 	bind_exec("CONTROL + Space", apps.ime_toggle)
 	bind_exec(main_mod .. "+ CONTROL + Space", apps.ime_toggle)
-	bind_exec(main_mod .. " + Print", apps.screenshot_region)
+	bind_exec(main_mod .. " + SHIFT + S", apps.screenshot_region)
 	bind_exec(main_mod .. "+ P", apps.neg_py)
 	bind_exec(main_mod .. " + SHIFT + Print", apps.screenshot_output)
 end

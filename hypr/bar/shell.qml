@@ -22,6 +22,7 @@ ShellRoot {
     readonly property bool showBrightness: Quickshell.env("DOTS_BAR_BRIGHTNESS") === "1"
     property bool keepAwake: false
     property bool showBatteryPercent: true
+    readonly property var inputMethod: SystemTray.items.values.find(item => item.id.toLowerCase() === "fcitx") || null
     readonly property var battery: UPower.displayDevice
     readonly property var audio: Pipewire.defaultAudioSink?.audio
     readonly property var audioOutputs: Pipewire.nodes.values.filter(node => node.isSink && !node.isStream)
@@ -256,7 +257,7 @@ ShellRoot {
                         anchors.centerIn: parent
                         spacing: 4
                         Repeater {
-                            model: SystemTray.items.values.filter(item => item.id !== "blueman")
+                            model: SystemTray.items.values.filter(item => item.id !== "blueman" && item !== root.inputMethod)
                             Item {
                                 id: trayIcon
                                 required property var modelData
@@ -281,6 +282,10 @@ ShellRoot {
                             }
                         }
                     }
+                }
+                InputMethodItem {
+                    height: parent.height
+                    entry: root.inputMethod
                 }
                 BarItem {
                     height: parent.height
